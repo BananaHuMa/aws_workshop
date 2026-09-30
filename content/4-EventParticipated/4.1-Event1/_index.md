@@ -1,126 +1,79 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-09-26
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “BUILDRATHON KICKOFF: CODE THE FUTURE WITH CMC GLOBAL”
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Emphasize building over passive learning through a structured product journey
+- Foster deep technical growth via dedicated mentoring, weekly meetups, and phase-based milestones
+- Connect tech talent with potential long-term career partners and the AWS builder network
+- Build real-world portfolios by guiding teams from initial architecture to verified product deployment
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Truong Bui** – Tech Lead, CMC Global 
+- **Phuong Pham** – Program Manager, FCAJ
+- **Thien Lu** – Program Manager, FCAJ
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Hands-on AI Agent Challenge: The "Triage Bot"
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- **Asynchronous Automation**: A practical demonstration of an AI agent that works "while you sleep."
+- **Workflow**:
+    - **Collect**: The bot autonomously scans issue trackers for new bugs or requests.
+    - **Analyze & Suggest**: It cross-references the issue with historical resolved tickets and codebase documentation to suggest potential fixes.
+    - **Report**: It compiles a structured, prioritized morning report (via Slack/Email) for the developer to review, approve, or refine upon waking up.
 
-#### Transitioning to modern application architecture – Microservices
-
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### Career & Community in Cloud & AI
+- **Industry Insights**: Real-world case studies from CMC Global and AWS practitioners on how organizations are adopting Agentic AI to solve business challenges.
+- **Certification & Growth**: Pathways for developers to upskill in AWS Cloud and Generative AI certifications.
 
 ### Key Takeaways
 
 #### Design Mindset
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- **BProblem-First, AI-Second**: Always start with the business pain point (e.g., developer burnout from manual issue triage) rather than forcing a technology solution.  
+- **Human-in-the-Loop**: AI agents should augment developers, not replace them. The bot suggests fixes, but the human developer retains final review and approval authority.  
+- **Ubiquitous Language**: Ensuring business stakeholders and AI engineers share a clear vocabulary when defining what the AI agent is allowed to do. 
 
 #### Technical Architecture
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- **Event-Driven AI Triggers**: Using asynchronous, event-driven architecture (e.g., EventBridge triggering a Lambda function) to wake up the AI agent only when a new issue is created, optimizing cost and performance.
 
 #### Modernization Strategy
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- **Phased AI Adoption**: Start with a narrow, high-ROI use case (like the Triage Bot) before expanding to fully autonomous CI/CD or deployment agents.
+- **Measuring AI ROI**: Track metrics like "time saved per developer per week," "reduction in mean time to resolution (MTTR)," and "developer satisfaction." 
 
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the **“Buildrathon Kickoff: Code the Future with CMC Global”** was extremely valuable, giving me a comprehensive view of building modern AI-powered solutions and understanding the practical application of Agentic AI on AWS. Key experiences included:
 
 #### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+- Experts from CMC Global and AWS shared best practices in cloud computing, Generative AI trends, and real-world AI adoption.
+- Through the talkshow, I gained a deeper understanding of how organizations are leveraging AWS and Agentic AI to solve complex business challenges and drive innovation.
 
 #### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- Helped me visualize how to build an autonomous, AI-powered solution from scratch with mentor support. 
+- Explored the practical workflow of a **"Morning Triage Bot"** that autonomously scans issue trackers, analyzes historical data, and suggests potential code fixes.  
+- Understood the real-world application of **Retrieval-Augmented Generation (RAG)**, prompt engineering, and knowledge bases to ground AI responses in accurate, enterprise-specific data.
+technology.  
 
 #### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+- Applying **RAG and event-driven triggers** reduces manual triage time while significantly improving the accuracy and context-awareness of AI-generated solutions. 
+- Integrating AI agents into the daily Software Development Life Cycle (SDLC) can transform reactive, time-consuming workflows into proactive, streamlined processes that boost overall team velocity.
 
 #### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![alt text](../../images/event1.1.jpg)
+![alt text](../../images/event1.2.jpg)
+![alt text](../../images/event1.3.jpg)
+> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about AI design, system modernization, and cross-team collaboration.

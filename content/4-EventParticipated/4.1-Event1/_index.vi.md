@@ -6,120 +6,72 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo Cáo Tổng Kết: “BUILDRATHON KICKOFF: CODE THE FUTURE WITH CMC GLOBAL”
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Mục Tiêu Sự Kiện
 
-### Mục Đích Của Sự Kiện
+- Nhấn mạnh việc thực hành (building) thay vì chỉ học thụ động thông qua một lộ trình phát triển sản phẩm có cấu trúc.
+- Thúc đẩy sự phát triển kỹ thuật chuyên sâu thông qua việc hướng dẫn (mentoring) tận tình, các buổi gặp mặt hàng tuần và các cột mốc theo giai đoạn.
+- Kết nối nhân tài công nghệ với các đối tác nghề nghiệp tiềm năng lâu dài và mạng lưới AWS builder.
+- Xây dựng hồ sơ năng lực (portfolio) thực tế bằng cách hướng dẫn các đội từ giai đoạn thiết kế kiến trúc ban đầu đến triển khai sản phẩm đã được xác minh.
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Diễn Giả
 
-### Danh Sách Diễn Giả
+- **Truong Bui** – Tech Lead, CMC Global 
+- **Phuong Pham** – Program Manager, FCAJ
+- **Thien Lu** – Program Manager, FCAJ
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Điểm Nổi Bật Chính
 
-### Nội Dung Nổi Bật
+#### Thử Thách Thực Hành AI Agent: "Triage Bot" (Bot Phân Loại)
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+- **Tự động hóa bất đồng bộ**: Minh họa thực tế về một AI agent hoạt động "trong khi bạn ngủ".
+- **Luồng công việc**:
+    - **Thu thập**: Bot tự động quét các trình theo dõi vấn đề (issue trackers) để tìm lỗi hoặc yêu cầu mới.
+    - **Phân tích & Đề xuất**: Bot đối chiếu vấn đề với các vé đã giải quyết trong quá khứ và tài liệu codebase để đề xuất các bản sửa lỗi tiềm năng.
+    - **Báo cáo**: Bot tổng hợp một báo cáo buổi sáng có cấu trúc và được phân loại mức độ ưu tiên (qua Slack/Email) để lập trình viên xem xét, phê duyệt hoặc tinh chỉnh khi thức dậy.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### Sự Nghiệp & Cộng Đồng trong Mảng Cloud & AI
+- **Thông tin chi tiết từ ngành**: Các case study thực tế từ CMC Global và các chuyên gia AWS về cách các tổ chức đang áp dụng Agentic AI để giải quyết các thách thức kinh doanh.
+- **Chứng chỉ & Phát triển**: Các lộ trình để lập trình viên nâng cao kỹ năng và lấy các chứng chỉ về AWS Cloud và Generative AI.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
-
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
-
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
-
-#### Domain-Driven Design (DDD)
-
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
-
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
-
-### Những Gì Học Được
+### Những Điểm Chốt Quan Trọng
 
 #### Tư Duy Thiết Kế
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- **Ưu tiên vấn đề, AI thứ hai (Problem-First, AI-Second)**: Luôn bắt đầu từ nỗi đau của doanh nghiệp (ví dụ: tình trạng kiệt sức của lập trình viên do phải phân loại vấn đề thủ công) thay vì ép buộc một giải pháp công nghệ.  
+- **Con người trong vòng lặp (Human-in-the-Loop)**: AI agent nên hỗ trợ (augment) lập trình viên, không thay thế họ. Bot đề xuất các bản sửa lỗi, nhưng lập trình viên vẫn giữ quyền xem xét và phê duyệt cuối cùng.  
+- **Ngôn ngữ phổ quát (Ubiquitous Language)**: Đảm bảo các bên liên quan trong doanh nghiệp và kỹ sư AI có chung một vốn từ vựng rõ ràng khi định nghĩa những gì AI agent được phép làm. 
 
 #### Kiến Trúc Kỹ Thuật
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- **Các trigger AI hướng sự kiện (Event-Driven AI Triggers)**: Sử dụng kiến trúc hướng sự kiện bất đồng bộ (ví dụ: EventBridge kích hoạt một hàm Lambda) để đánh thức AI agent chỉ khi có vấn đề mới được tạo, giúp tối ưu hóa chi phí và hiệu suất.
 
 #### Chiến Lược Hiện Đại Hóa
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- **Áp dụng AI theo giai đoạn**: Bắt đầu với một use case hẹp, ROI cao (như Triage Bot) trước khi mở rộng sang các agent CI/CD hoặc triển khai hoàn toàn tự động.
+- **Đo lường ROI của AI**: Theo dõi các chỉ số như "thời gian tiết kiệm được cho mỗi lập trình viên mỗi tuần", "giảm thời gian giải quyết trung bình (MTTR)" và "mức độ hài lòng của lập trình viên". 
 
-### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+### Trải Nghiệm Sự Kiện
 
-### Trải nghiệm trong event
+Tham gia **“Buildrathon Kickoff: Code the Future with CMC Global”** là một trải nghiệm cực kỳ giá trị, mang lại cho tôi cái nhìn toàn diện về việc xây dựng các giải pháp AI hiện đại và hiểu được ứng dụng thực tế của Agentic AI trên AWS. Những trải nghiệm chính bao gồm:
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+#### Học hỏi từ các diễn giả giàu chuyên môn
+- Các chuyên gia từ CMC Global và AWS đã chia sẻ những best practices về điện toán đám mây, các xu hướng Generative AI và việc áp dụng AI vào thực tế.
+- Thông qua buổi talkshow, tôi đã hiểu sâu hơn về cách các tổ chức đang tận dụng AWS và Agentic AI để giải quyết các thách thức kinh doanh phức tạp và thúc đẩy đổi mới sáng tạo.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Trải nghiệm kỹ thuật thực hành
+- Giúp tôi hình dung cách xây dựng một giải pháp AI tự động từ đầu với sự hỗ trợ của mentor. 
+- Khám phá luồng công việc thực tế của **"Morning Triage Bot"** tự động quét các issue tracker, phân tích dữ liệu lịch sử và đề xuất các bản sửa lỗi code tiềm năng.  
+- Hiểu được ứng dụng thực tế của **Retrieval-Augmented Generation (RAG)**, prompt engineering và knowledge bases để đảm bảo các phản hồi của AI dựa trên dữ liệu chính xác và đặc thù của doanh nghiệp.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+#### Những bài học rút ra
+- Việc áp dụng **RAG và các trigger hướng sự kiện** giúp giảm thời gian phân loại thủ công đồng thời cải thiện đáng kể độ chính xác và khả năng nhận biết ngữ cảnh của các giải pháp do AI tạo ra. 
+- Tích hợp AI agent vào vòng đời phát triển phần mềm (SDLC) hàng ngày có thể biến các quy trình làm việc thụ động, tốn thời gian thành các quy trình chủ động, tinh gọn, giúp tăng tốc độ tổng thể của nhóm.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+#### Một số hình ảnh tại sự kiện
+![alt text](../../images/event1.1.jpg)
+![alt text](../../images/event1.2.jpg)
+![alt text](../../images/event1.3.jpg)
+> Nhìn chung, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi định hình lại tư duy về thiết kế AI, hiện đại hóa hệ thống và sự hợp tác giữa các nhóm.
