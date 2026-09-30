@@ -1,41 +1,33 @@
 ---
-title: "Worklog Tổng hợp (Tuần 1 - Tuần 3)"
-date: 2026-09-30
+title: "Nhật ký công việc Tuần 1"
+date: 2026-09-20
 weight: 1
 chapter: false
-pre: " <b> 1. </b> "
+pre: " <b> 1.1. </b> "
 ---
 
-### Mục tiêu giai đoạn (Tuần 1 - Tuần 3):
+### Mục tiêu Tuần 1:
 
-* Nắm vững các dịch vụ AWS cốt lõi: IAM, EC2, VPC, S3, RDS, CloudWatch, Lambda và Lightsail.
-* Thực hành triển khai hạ tầng mạng chuẩn production (Multi-AZ, NAT Gateway, Site-to-Site VPN).
-* Triển khai, quản lý và bảo mật ứng dụng trên EC2 (Linux/Windows) và Lightsail.
-* Thiết lập quy trình giám sát (Monitoring) và tự động hóa (Automation) vận hành hệ thống.
-* Thực hành di chuyển máy ảo (VM Import/Export) và quản lý container cơ bản.
+* Hiểu và triển khai các phương pháp hay nhất (best practices) cốt lõi về Quản lý Danh tính và Truy cập (IAM) của AWS.
+* Thiết kế và triển khai các kiến trúc mạng VPC an toàn, có tính sẵn sàng cao (highly available).
+* Nắm vững quy trình quản lý vòng đời của EC2 instance, bao gồm tạo AMI, thay đổi kích thước (resizing) và khôi phục key pair.
+* Tận dụng Amazon S3 để lưu trữ trang web tĩnh, quản lý phiên bản (versioning) và sao chép đa vùng (cross-region replication), tích hợp với Amazon CloudFront để phân phối nội dung an toàn, độ trễ thấp.
+* Thành thạo việc sử dụng AWS CLI và CloudShell để quản lý hạ tầng.
 
-### Các công việc đã triển khai:
+### Các nhiệm vụ cần thực hiện trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - **Quản lý IAM & Chi phí:** Tạo IAM Groups, Users, Roles và thực hành chuyển đổi vai trò (Role Switching).<br>- **5 Nhiệm vụ AWS:** Khởi tạo/dừng EC2, cấu hình Bedrock, thiết lập AWS Budgets, triển khai ứng dụng serverless Lambda, cấp phát RDS.<br>- **Mạng (Networking):** Tạo VPC ban đầu (`ASG`) với CIDR `10.10.0.0/16`. | 14/09/2026 | 14/09/2026 | [IAM & Budgets](https://000002.awsstudygroup.com/), [VPC](https://000003.awsstudygroup.com/3-prerequisite/3.1-createvpc/) |
+| 2 | - **Mạng nâng cao:** Tạo Public/Private Subnets, Internet Gateway, Route Tables và các Security Group chuyên dụng.<br>- **Giám sát & Kết nối:** Bật VPC Flow Logs, triển khai EC2 instance Public/Private, cấu hình NAT Gateways có tính sẵn sàng cao, kiểm thử bằng Reachability Analyzer và thiết lập Site-to-Site VPN. | 15/09/2026 | 15/09/2026 | [VPC Networking](https://000003.awsstudygroup.com/3-prerequisite/), [EC2 & VPN](https://000003.awsstudygroup.com/4-createec2server/), [VPN](https://000003.awsstudygroup.com/5-vpnsitetosite/5.2-vpnsitetosite/) |
+| 3 | - **Quản lý EC2:** Khởi tạo Windows Server 2025 & Amazon Linux 2023. Thực hiện Sysprep, tạo Custom AMI và thay đổi kích thước instance.<br>- **Khôi phục & Triển khai:** Khôi phục key pair bị mất qua SSM (Windows) và User Data (Linux). Thiết lập Ubuntu Desktop với RDP. Triển khai ứng dụng full-stack Node.js/MySQL trên cả hai môi trường hệ điều hành. | 17/09/2026 | 17/09/2026 | [EC2 Basics](https://000004.awsstudygroup.com/3-launchwindowsinstance/), [App Deployment](https://000004.awsstudygroup.com/6-awsfcjmanagement-linux/) |
+| 4 | - **S3 & Phương pháp hay nhất về IAM:** Tạo S3 buckets. So sánh việc hardcode IAM Access Keys với việc sử dụng IAM Roles (Instance Profiles) an toàn hơn để EC2 truy cập S3.<br>- **Thành thạo CLI:** Thực hành các lệnh Linux cơ bản, chuyển tệp và quản lý tài nguyên bằng AWS CLI và CloudShell. | 18/09/2026 | 18/09/2026 | [IAM Roles](https://000048.awsstudygroup.com/3-iamroleec2/), [CloudShell & CLI](https://000049.awsstudygroup.com/2-basicfeature/) |
+| 5 | - **Tính năng nâng cao của S3:** Cấu hình lưu trữ trang web tĩnh (Static Website Hosting) trên S3, quản lý Block Public Access và thiết lập object ACLs.<br>- **CloudFront & Khôi phục sau thảm họa (DR):** Tích hợp CloudFront với Origin Access Control (OAC). Bật S3 Versioning, di chuyển objects giữa các buckets và cấu hình Cross-Region Replication (CRR) để khôi phục sau thảm họa. | 20/09/2026 | 20/09/2026 | [Static Website](https://000057.awsstudygroup.com/3-staticwebsite/), [CloudFront](https://000057.awsstudygroup.com/7-cloudfront/), [CRR](https://000057.awsstudygroup.com/10-s3ccr/) |
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 (14/09) | - **IAM & Bảo mật:** Tạo IAM Group, User, Role, thực hành Switch Roles.<br>- **Tối ưu chi phí:** Hoàn thành 5 tác vụ "Money-Making", thiết lập AWS Budgets.<br>- **Networking:** Khởi tạo VPC (`ASG`, CIDR `10.10.0.0/16`). | 14/09/2026 | 14/09/2026 | [Lab 000002](https://000002.awsstudygroup.com/), [Lab 000003](https://000003.awsstudygroup.com/) |
-| 3 (15/09) | - **VPC Nâng cao:** Tạo Public/Private Subnets (Multi-AZ), Internet Gateway, Route Table, Security Groups.<br>- **Giám sát mạng:** Bật VPC Flow Logs.<br>- **EC2 & Kết nối:** Launch EC2 Public/Private, SSH Bastion, NAT Gateway (High Availability), Reachability Analyzer.<br>- **Hybrid Cloud:** Cấu hình Site-to-Site VPN (IKEv2, BGP). | 15/09/2026 | 15/09/2026 | [Lab 000003](https://000003.awsstudygroup.com/) |
-| 5 (17/09) | - **EC2 Management:** Launch Windows Server 2025 & Amazon Linux 2023, kết nối RDP/SSH (MobaXterm, PuTTY).<br>- **Lifecycle:** Resize instance, tạo EBS Snapshot, Custom AMI (Sysprep), Launch từ AMI.<br>- **Khôi phục truy cập:** Sử dụng SSM (Windows) và User Data (Linux) khi mất Key Pair.<br>- **App Deployment:** Triển khai ứng dụng Node.js/MySQL trên Linux và Windows (XAMPP). | 17/09/2026 | 17/09/2026 | [Lab 000004](https://000004.awsstudygroup.com/) |
-| 6 (18/09) | - **S3 & IAM Access Key:** Tạo S3 Bucket, tạo IAM User có Programmatic Access, thực hành upload file qua Python (boto3) với hardcoded key.<br>- **IAM Role for EC2:** Gán Instance Profile, sửa script để sử dụng temporary credentials an toàn.<br>- **CloudShell & CLI:** Thực hành lệnh Linux cơ bản, quản lý tài nguyên qua AWS CLI. | 18/09/2026 | 18/09/2026 | [Lab 000048](https://000048.awsstudygroup.com/), [Lab 000049](https://000049.awsstudygroup.com/) |
-| CN (20/09) | - **S3 Static Website:** Enable hosting, cấu hình Block Public Access và ACLs.<br>- **CloudFront:** Tạo Distribution, cấu hình Origin Access Control (OAC) để bảo mật S3, kiểm tra hiệu suất Edge Location.<br>- **S3 Advanced:** Bật Versioning, Move Objects, cấu hình Cross-Region Replication (CRR). | 20/09/2026 | 20/09/2026 | [Lab 000057](https://000057.awsstudygroup.com/) |
-| 3 (22/09) | - **RDS Deployment:** Tạo VPC, SG, Subnet Group cho RDS. Launch MySQL Multi-AZ instance.<br>- **App Integration:** Kết nối EC2 với RDS, seeding database, deploy app qua PM2.<br>- **Backup & Restore:** Thực hành tạo DB Snapshot và khôi phục sang instance mới.<br>- **Cleanup:** Dọn dẹp tài nguyên RDS và VPC. | 22/09/2026 | 22/09/2026 | [Lab 000005](https://000005.awsstudygroup.com/) |
-| 5 (24/09) | - **Lightsail Apps:** Deploy Highly Available Database, WordPress, PrestaShop, Akaunting.<br>- **Networking & Security:** Gán Static IP, cấu hình domain, hardening (disable SSH port 22).<br>- **Operations:** Tạo Manual/Automated Snapshots, Scale-up instance, cấu hình CloudWatch Alarms.<br>- **Lightsail Containers:** Tạo Container Service, deploy public (Nginx) và custom image.<br>- **CLI Automation:** Quản lý S3, SNS, IAM, Networking và EC2 hoàn toàn bằng AWS CLI. | 24/09/2026 | 24/09/2026 | [Lab 000045](https://000045.awsstudygroup.com/), [Lab 000046](https://000046.awsstudygroup.com/), [Lab 000011](https://000011.awsstudygroup.com/) |
-| CN (28/09) | - **VM Import/Export:** Chuẩn bị VM Ubuntu trên VMware, upload `.vmdk` lên S3, tạo IAM Role `vmimport`, import thành AMI và launch EC2.<br>- **Export:** Cấu hình S3 ACL/Policy, export EC2 instance thành file VMDK để deploy on-premises.<br>- **Cleanup:** Dọn dẹp AMI, Volume, S3 và EC2. | 28/09/2026 | 28/09/2026 | [Lab 000014](https://000014.awsstudygroup.com/) |
-| 3 (29/09) | - **CloudWatch Workshop:** Deploy stack qua CloudFormation.<br>- **Monitoring:** Xem Metrics, sử dụng Search/Math Expressions, Dynamic Labels.<br>- **Logs & Alarms:** Truy vấn Logs Insights, tạo Metric Filter, thiết lập Alarm với SNS Notification, xây dựng Dashboard.<br>- **Cleanup:** Xóa CloudFormation Stack. | 29/09/2026 | 29/09/2026 | [Lab 000008](https://000008.awsstudygroup.com/) |
-| 4 (30/09) | - **Lambda Automation:** Tạo 2 Lambda Functions (Start/Stop EC2) với Python, tích hợp Slack Incoming Webhook.<br>- **EventBridge:** Lập lịch chạy tự động (Rate-based schedule).<br>- **Testing & Cleanup:** Kiểm thử trigger, xác nhận thông báo Slack, xóa toàn bộ tài nguyên (Lambda, EventBridge, IAM Role, EC2, VPC, Slack App). | 30/09/2026 | 30/09/2026 | [Lab 000022](https://000022.awsstudygroup.com/) |
+### Thành tựu Tuần 1:
 
-### Kết quả đạt được:
-
-* **Quản trị định danh & Bảo mật:** Thành thạo tạo và quản lý IAM Users, Groups, Roles, áp dụng nguyên tắc đặc quyền tối thiểu (least privilege) và chuyển đổi an toàn từ Access Key sang IAM Roles cho EC2.
-* **Kiến trúc mạng (Networking):** Thiết kế và triển khai thành công hạ tầng VPC chuẩn production: Multi-AZ Subnets, NAT Gateway (High Availability), Internet Gateway, Route Tables, Security Groups chặt chẽ, VPC Flow Logs và Site-to-Site VPN.
-* **Điện toán (Compute):** Vận hành linh hoạt EC2 (Amazon Linux, Windows Server, Ubuntu), thành thạo các thao tác: Resize, tạo Snapshot/AMI, khôi phục truy cập khẩn cấp (SSM, User Data), và tự động hóa Start/Stop bằng Lambda + EventBridge + Slack.
-* **Lưu trữ (Storage):** Quản lý chuyên sâu Amazon S3: Static Website Hosting, Versioning, Cross-Region Replication (CRR), Move Objects, và bảo mật tuyệt đối bằng CloudFront Origin Access Control (OAC).
-* **Cơ sở dữ liệu (Database):** Triển khai và quản lý Amazon RDS (MySQL Multi-AZ) và Lightsail Database, thực hành sao lưu (Snapshot) và khôi phục (Restore) thành công.
-* **Giám sát (Observability):** Sử dụng thành thạo CloudWatch để theo dõi Metrics, truy vấn Logs Insights, tạo Metric Filters từ log, thiết lập Alarms gửi cảnh báo qua SNS và tổng hợp trên Dashboard.
-* **Di chuyển & Container:** Thực hiện thành công quy trình VM Import/Export giữa môi trường on-premises (VMware) và AWS, đồng thời nắm được cách deploy container trên Lightsail.
-* **Kỷ luật vận hành:** Tuân thủ nghiêm ngặt quy trình dọn dẹp tài nguyên (Cleanup) sau mỗi bài lab để tránh phát sinh chi phí ngoài ý muốn.
+* **IAM & Bảo mật:** Triển khai thành công nguyên tắc đặc quyền tối thiểu (principle of least privilege) bằng cách quản lý quyền thông qua IAM Groups và Roles, loại bỏ nhu cầu sử dụng access keys dài hạn trong mã ứng dụng.
+* **Kiến trúc Mạng:** Thiết kế và triển khai kiến trúc VPC đa vùng sẵn sàng (multi-AZ) với public/private subnets, NAT Gateways và kết nối Site-to-Site VPN an toàn.
+* **Làm chủ Compute (Máy chủ):** Có kinh nghiệm thực tế với toàn bộ vòng đời của EC2, bao gồm tạo custom AMI, thay đổi kích thước instance và các kỹ thuật khôi phục nâng cao (SSM Run Command và inject EC2 User Data).
+* **Lưu trữ & Phân phối nội dung:** Lưu trữ thành công trang web tĩnh trên S3, bảo mật bằng CloudFront Origin Access Control (OAC) và triển khai bảo vệ dữ liệu cấp doanh nghiệp sử dụng S3 Versioning và Cross-Region Replication (CRR).
+* **Tự động hóa & CLI:** Thành thạo việc quản lý tài nguyên AWS theo chương trình (programmatically) bằng AWS CLI và CloudShell, cải thiện hiệu quả vận hành và khả năng tái lập.
+* **Triển khai Ứng dụng:** Triển khai và kiểm thử thành công một ứng dụng web full-stack trên cả hai môi trường Amazon Linux 2023 và Windows Server 2025.

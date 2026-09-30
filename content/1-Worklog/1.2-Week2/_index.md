@@ -1,57 +1,34 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-09-27
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Deploy and manage relational databases using Amazon RDS with high availability (Multi-AZ).
+* Utilize Amazon Lightsail for rapid, cost-effective deployment of pre-configured applications (WordPress, PrestaShop, Akaunting).
+* Explore containerized application deployment using Amazon Lightsail Container Services.
+* Automate infrastructure provisioning and management using advanced AWS CLI commands across multiple services.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | - **Database & Compute**: Created VPC, Subnets, and Security Groups for RDS. <br> - Launched Multi-AZ Amazon RDS (MySQL) instance. <br> - Deployed Amazon Linux 2023 EC2 instance and connected via SSH (MobaXterm). <br> - **Practice**: Deployed Node.js app, connected to RDS, seeded database, and practiced RDS Snapshot creation/restoration. | 22/09/2026 | 22/09/2026 | <ul><li><a href="https://000005.awsstudygroup.com/2-prerequiste/2.1-create-vpc/">Create VPC</a></li><li><a href="https://000005.awsstudygroup.com/2-prerequiste/2.2-create-ec2-sg/">Create Security Groups</a></li><li><a href="https://000005.awsstudygroup.com/2-prerequiste/2.3-create-rds-subnet-group/">Create RDS Subnet Group</a></li><li><a href="https://000005.awsstudygroup.com/3-create-rds/">Create RDS Instance</a></li><li><a href="https://000005.awsstudygroup.com/4-create-ec2/">Create EC2 Instance</a></li><li><a href="https://000005.awsstudygroup.com/5-deploy-app/">Deploy Application</a></li><li><a href="https://000005.awsstudygroup.com/6-backup/">Backup and Restore</a></li></ul> |
+| 2   | - **Lightsail Deployments**: Provisioned HA Lightsail Database. Deployed WordPress, PrestaShop, and Akaunting instances. <br> - Configured Static IPs, remote database connections, and Bitnami app settings. <br> - **Security**: Hardened instances by removing public SSH (Port 22) access. | 24/09/2026 | 24/09/2026 | <ul><li><a href="https://000045.awsstudygroup.com/1-database/">Deploy Lightsail Database</a></li><li><a href="https://000045.awsstudygroup.com/2-wp-instance/2.1-deploy-instance/">Deploy WordPress</a></li><li><a href="https://000045.awsstudygroup.com/3-e-commerce-instance/3.1-deploy/">Deploy PrestaShop</a></li><li><a href="https://000045.awsstudygroup.com/4-akaunting-instance/4.1-deploy-instance/">Deploy Akaunting</a></li><li><a href="https://000045.awsstudygroup.com/5-secure-the-applications/">Secure Applications</a></li></ul>                                                                                                                                                                     |
+| 2   | - **Operations & Monitoring**: Created Manual and Automated Snapshots. Scaled WordPress to a larger instance plan via snapshot migration. Configured CPU Burst Capacity Alarms with email notifications. | 24/09/2026 | 24/09/2026 | <ul><li><a href="https://000045.awsstudygroup.com/6-create-snapshots/">Create Snapshots</a></li><li><a href="https://000045.awsstudygroup.com/7-migrate-to-larger-instances/">Migrate to Larger Instances</a></li><li><a href="https://000045.awsstudygroup.com/8-create-alarms/">Create Alarms</a></li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 2   | - **Containerization**: Created Amazon Lightsail Container Service. <br> - **Practice**: Deployed a public Nginx image from Docker Hub, then built and deployed a custom container image using Docker and AWS CLI. | 24/09/2026 | 24/09/2026 | <ul><li><a href="https://000046.awsstudygroup.com/1-prepare/">Preparation Steps</a></li><li><a href="https://000046.awsstudygroup.com/2-create-containerservice/">Create Container Service</a></li><li><a href="https://000046.awsstudygroup.com/3-deploy-publicimage/">Deploy Public Image</a></li><li><a href="https://000046.awsstudygroup.com/4-deploy-yourimage/">Deploy Custom Image</a></li></ul>                                                                                                                                                                                                                                                                                                                     |
+| 2   | - **Advanced CLI Automation**: Installed AWS CLI v2 and configured multiple profiles. <br> - **Practice**: Managed IAM (users/groups/keys), S3 (buckets/objects), SNS (topics/subscriptions), VPC Networking, and full EC2 lifecycles entirely via command line. | 24/09/2026 | 24/09/2026 | <ul><li><a href="https://000011.awsstudygroup.com/3-installcli/">Install AWS CLI</a></li><li><a href="https://000011.awsstudygroup.com/5-s3/">CLI with S3</a></li><li><a href="https://000011.awsstudygroup.com/6-sns/">CLI with SNS</a></li><li><a href="https://000011.awsstudygroup.com/7-iam/">CLI with IAM</a></li><li><a href="https://000011.awsstudygroup.com/8-network/">CLI with Networking</a></li><li><a href="https://000011.awsstudygroup.com/9-ec2/">CLI with EC2</a></li></ul>                                                                                                                                                                                                                             |
 
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully provisioned a highly available, Multi-AZ Amazon RDS MySQL instance and securely connected it to an EC2-hosted application using strict Security Group rules.
+* Mastered Amazon Lightsail for rapid application deployment, successfully integrating three distinct applications (WordPress, PrestaShop, Akaunting) with a centralized, highly available Lightsail Database.
+* Implemented operational best practices in Lightsail, including assigning Static IPs, configuring automated/manual snapshots, scaling an instance to a larger plan seamlessly, and setting up proactive CPU monitoring alarms.
+* Gained hands-on experience with containerization by deploying both public Docker Hub images and custom-built container images using the Amazon Lightsail Container Service.
+* Transitioned from manual console operations to automated infrastructure management by mastering AWS CLI v2, successfully provisioning and tearing down complex resources (IAM, S3, SNS, VPC, EC2) via command-line scripts.
+* Consistently applied security and cost-optimization best practices, including removing unnecessary public SSH access and systematically cleaning up all temporary resources at the end of each module.
