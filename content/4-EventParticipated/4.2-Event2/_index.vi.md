@@ -1,5 +1,5 @@
 ---
-title: "Navigating the Future of Cloud & AI: Werner Vogels Keynote"
+title: "Event 2"
 date: 2026-10-02
 weight: 1
 chapter: false
