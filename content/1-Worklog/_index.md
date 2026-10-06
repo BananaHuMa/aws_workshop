@@ -7,11 +7,11 @@ pre: " <b> 1. </b> "
 ---
 
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+**Week 1:** [AWS Fundamentals, IAM, S3, VPC, and CloudFront](1.1-week1/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 2:** [ Databases, App Deployment, Lightsail, and CLI Automation](1.2-week2/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 3:** [ Observability, Grafana Monitoring, and VM Import/Export](1.3-week3/)
 
 **Week 4:** [Doing task C...](1.4-week4/)
 
