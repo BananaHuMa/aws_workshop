@@ -13,11 +13,11 @@ pre: " <b> 1. </b> "
 
 **Week 3:** [ Observability, Grafana Monitoring, and VM Import/Export](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** [Serverless Automation, Disaster Recovery, and Secure Systems Management](1.4-week4/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 5:** [ Infrastructure as Code (IaC) with CloudFormation and AWS CDK](1.5-week5/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 6:** [Advanced Architecture, Cost Optimization, and Governance](1.6-week6/)
 
 **Week 7:** [Doing task G...](1.7-week7/)
 

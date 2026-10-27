@@ -1,59 +1,44 @@
 ---
-title: "Worklog Tuần 5"
-date: 2024-01-01
+title: "Nhật ký công việc Tuần 5"
+date: 2026-10-18
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+### Mục tiêu Tuần 5:
 
+* Nắm vững bộ nhớ đệm trong RAM (in-memory caching) và quản lý dữ liệu bằng Amazon ElastiCache for Redis.
+* Triển khai tổ chức tài nguyên và tự động hóa hiệu quả bằng Gắn thẻ (Tagging) và Nhóm tài nguyên (Resource Groups) của AWS.
+* Quản lý các instance EC2 một cách bảo mật và ở quy mô lớn mà không cần mở cổng vào (inbound ports) bằng AWS Systems Manager (Session Manager, Patch Manager, Run Command).
+* Hiểu và mô phỏng quy trình sao chép và chuyển đổi dự phòng (failover) trong khôi phục sau thảm họa bằng AWS Elastic Disaster Recovery (DRS).
 
-### Mục tiêu tuần 5:
+### Các nhiệm vụ sẽ thực hiện trong tuần:
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - **Amazon ElastiCache for Redis:** <br>&emsp; + Tạo subnet groups và triển khai các cụm Redis (Tắt & Bật chế độ Cluster) <br>&emsp; + Khám phá các endpoints qua Console và AWS CLI <br>&emsp; + Tích hợp với Python (Boto3) SDK <br>&emsp; + Thực hành các thao tác Redis: Strings, Hashes, Pub/Sub và Streams | 10/12/2026 | 10/12/2026 | <https://000061.awsstudygroup.com/> |
+| 2 | - **Quản lý tài nguyên:** <br>&emsp; + Áp dụng và quản lý Tags trên các instance EC2 qua Console và AWS CLI <br>&emsp; + Lọc tài nguyên theo tags <br>&emsp; + Tạo và quản lý AWS Resource Groups dựa trên Tag | 10/12/2026 | 10/12/2026 | <https://000027.awsstudygroup.com/> |
+| 3 | - **AWS Systems Manager:** <br>&emsp; + Cấu hình VPC, subnets và Security Groups cho SSM <br>&emsp; + Gắn vai trò IAM `AmazonSSMManagedInstanceCore` cho các instance Windows EC2 <br>&emsp; + Thực hiện quét và cài đặt bản vá bằng Patch Manager <br>&emsp; + Chạy các script PowerShell qua Run Command | 10/15/2026 | 10/15/2026 | <https://000031.awsstudygroup.com/> |
+| 4 | - **AWS Elastic Disaster Recovery (DRS):** <br>&emsp; + Triển khai hạ tầng cơ sở qua CloudFormation <br>&emsp; + Cấu hình cài đặt sao chép mặc định và vai trò IAM cho agent <br>&emsp; + Cài đặt các agent sao chép trên máy chủ nguồn <br>&emsp; + Cấu hình Launch Templates và thực hiện Diễn tập Failover (Failover Drill) | 10/16/2026 | 10/16/2026 | <https://000100.awsstudygroup.com/> |
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Thành tựu Tuần 5:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* **Thành thạo ElastiCache & Redis:** 
+  * Triển khai và quản lý thành công các cụm Redis ở cả cấu hình Tắt và Bật chế độ Cluster.
+  * Khám phá và sử dụng các endpoint Primary, Reader và Configuration thông qua cả AWS Console và CLI.
+  * Phát triển các script Python (Boto3) để tạo cụm theo chương trình, quản lý Kiểm soát truy cập dựa trên vai trò (RBAC) và thực hiện các thao tác Redis nâng cao bao gồm thao tác String/Hash, nhắn tin Pub/Sub và xử lý Stream đa luồng.
 
+* **Tổ chức tài nguyên:** 
+  * Áp dụng các chiến lược gắn thẻ nhất quán (cặp Key-Value) cho các instance EC2 để phân bổ chi phí và theo dõi môi trường.
+  * Tạo và sử dụng AWS Resource Groups để lọc và quản lý các bộ sưu tập tài nguyên dựa trên tiêu chí tag, hợp lý hóa các tác vụ quản trị.
 
-### Kết quả đạt được tuần 5:
+* **Quản lý dựa trên Agent an toàn (Systems Manager):** 
+  * Loại bỏ nhu cầu truy cập SSH/RDP truyền thống bằng cách cấu hình AWS Systems Manager Session Manager.
+  * Gán thành công các vai trò IAM của SSM cho các instance Windows và xác minh kết nối qua Fleet Manager.
+  * Tự động hóa việc vá lỗi hệ điều hành bằng Patch Manager và thực thi các lệnh PowerShell từ xa trên nhiều instance bằng Run Command, với đầu ra được ghi nhật ký vào S3.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Mô phỏng Khôi phục sau Thảm họa (DRS):** 
+  * Cung cấp một môi trường tại chỗ (on-premises) được mô phỏng và cấu hình cài đặt sao chép mặc định của AWS DRS.
+  * Cài đặt và cấu hình agent sao chép DRS trên các máy chủ Linux nguồn, theo dõi quá trình đồng bộ hóa ban đầu và tạo đĩa staging cho đến khi đạt trạng thái "Healthy" (Khỏe mạnh).
+  * Định nghĩa các EC2 Launch Templates cho các instance được khôi phục và thực hiện thành công một Diễn tập Failover (Failover Drill) không gây gián đoạn, xác minh việc cung cấp biệt lập các instance web và cơ sở dữ liệu được khôi phục.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Xuất sắc trong Vận hành:** Luôn tuân thủ nguyên tắc đặc quyền tối thiểu (principle of least privilege) và thực hiện dọn dẹp tài nguyên toàn diện (chấm dứt các instance, xóa các cụm và xóa các CloudFormation stacks) để ngăn chặn chi phí phát sinh ngoài ý muốn.

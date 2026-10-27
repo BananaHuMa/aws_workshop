@@ -12,11 +12,11 @@ pre: " <b> 1. </b> "
 
 **Tuần 3:** [Observability, Giám sát bằng Grafana và VM Import/Export](1.3-week3/)
 
-**Tuần 4:** [Làm công việc C...](1.4-week4/)
+**Tuần 4:** [ Quản trị Cơ sở dữ liệu (DynamoDB, ElastiCache), Systems Manager và Disaster Recovery (DRS)](1.4-week4/)
 
-**Tuần 5:** [Làm công việc D...](1.5-week5/)
+**Tuần 5:** [Infrastructure as Code (CDK, CloudFormation), Session Manager và Tối ưu hóa EC2 (Right-Sizing)](1.5-week5/)
 
-**Tuần 6:** [Làm công việc E...](1.6-week6/)
+**Tuần 6:** [ Giám sát mạng (VPC Flow Logs), Quản trị chi phí và Bảo mật nâng cao (IAM Governance, Service Quotas, DLM)](1.6-week6/)
 
 **Tuần 7:** [Làm công việc G...](1.7-week7/)
 
