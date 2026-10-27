@@ -3,7 +3,7 @@ title: "Nhật ký công việc Tuần 6"
 date: 2026-10-25
 weight: 6
 chapter: false
-pre: " <b> 6. </b> "
+pre: " <b> 1.6. </b> "
 ---
 ### Mục tiêu Tuần 6:
 
