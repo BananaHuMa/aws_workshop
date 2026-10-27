@@ -1,115 +1,94 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-09-30
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
 In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Enterprise AI Legal & Security Assistant
+## A Unified AWS Serverless RAG Solution for Automated Compliance & Legal Retrieval
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+The Enterprise AI Legal & Security Assistant is designed for the FCAJ bootcamp to enable businesses to securely query internal legal documents (e.g., Vietnam's Decree 13/PDPD) and proactively detect compliance violations in newly uploaded contracts. The system leverages a Hybrid, Event-Driven AWS Serverless architecture. As the RAG Architect (Person 1), the focus is on building a robust Document Ingestion and Knowledge Base pipeline that guarantees exact, hallucination-free legal context retrieval through deterministic metadata filtering, bilingual smart chunking, and strict dual-threshold confidence guardrails, all while adhering to a strict $200 project budget.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+**What’s the Problem?**
+Manual legal compliance checks are slow, error-prone, and expensive. Standard off-the-shelf RAG systems fail when processing real-world legal documents: they break complex Vietnamese legal formatting (e.g., splitting "Điều 1" from "Khoản 2"), mix up contexts between government decrees and private contracts, and hallucinate when faced with low-relevance data. Furthermore, processing PDFs in serverless environments often triggers cross-platform compilation errors and timeout crashes.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+**The Solution**
+The platform uses an event-driven AWS architecture. When a document is uploaded to Amazon S3, it triggers an AWS Lambda function that employs a **Universal Smart Chunker**. This chunker uses specialized bilingual regex (for Vietnamese "Điều/Khoản" and English "Article/Section") with a robust paragraph-based fallback. It redacts PII, stamps metadata (`document_type`, `contract_id`), and saves clean JSON chunks to a processed S3 bucket. Amazon Bedrock Knowledge Base (using Titan Text Embeddings V2 and OpenSearch Serverless) indexes this data. Retrieval is strictly controlled via Metadata Filtering and a Dual-Threshold Guardrail (rejecting scores < 0.50) to guarantee zero cross-contamination and prevent AI hallucinations.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+**Benefits and Return on Investment**
+The solution establishes a production-grade, reusable ingestion pipeline that guarantees high-precision legal retrieval. It eliminates manual document parsing, ensures strict data privacy via PII redaction, and prevents costly AI hallucinations through deterministic metadata isolation. The architecture is heavily optimized to stay strictly under the $200 bootcamp budget by using pure-Python dependencies (`pypdf`) to avoid complex build pipelines and optimizing chunk sizes to minimize Bedrock token usage.
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The platform employs a serverless AWS architecture to manage document ingestion and retrieval. Data is uploaded to a Raw S3 bucket, triggering a Lambda function that extracts, chunks, redacts, and tags the data. Processed JSON chunks are stored in a Processed S3 bucket, which serves as the data source for an Amazon Bedrock Knowledge Base. The architecture is detailed below:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+*(Placeholder for Architecture Diagram: S3 Raw -> EventBridge -> Lambda (pypdf + Smart Chunker + PII Redaction) -> S3 Processed -> Bedrock Knowledge Base (Titan Embeddings V2 + OpenSearch Serverless) -> Bedrock Retrieve API with Metadata Filters)*
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+**AWS Services Used**
+- **Amazon S3**: Dual-bucket architecture for raw document storage and processed JSON chunk storage.
+- **AWS Lambda**: Event-driven compute for PDF text extraction, smart chunking, and metadata tagging.
+- **Amazon Bedrock Knowledge Base**: The core RAG engine for vector storage and semantic retrieval.
+- **Amazon OpenSearch Serverless**: The underlying vector database (provisioned via Bedrock Quick Create).
+- **Amazon Titan Text Embeddings V2**: Multilingual embedding model to accurately vectorize both Vietnamese and English legal text.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+**Component Design**
+- **Data Ingestion**: S3 Event Notifications trigger the Lambda function upon file upload to specific folders (`decrees/` or `contracts/`).
+- **Data Processing**: Lambda uses `pypdf` (pure Python) to extract text, applies a Universal Smart Chunker (Regex + Paragraph Fallback), redacts PII, and stamps metadata.
+- **Data Storage**: Clean, hierarchical JSON chunks are saved to the Processed S3 bucket.
+- **Knowledge Base**: Bedrock syncs the S3 bucket, generating embeddings and storing vectors with flat metadata for filtering.
+- **Retrieval & Guardrails**: The backend API calls the Bedrock `Retrieve` API with strict `document_type` metadata filters and enforces a dual-threshold confidence score (0.65 for inclusion, 0.50 absolute floor) to prevent hallucinations.
 
 ### 4. Technical Implementation
 **Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+This project follows a structured 4-phase development cycle:
+- **Phase 1: Local Prototyping & Validation**: Develop and test the Universal Smart Chunker and Mock Bedrock API locally using ChromaDB and real Vietnamese/English PDFs to validate regex and fallback logic.
+- **Phase 2: AWS Ingestion Pipeline Deployment**: Deploy the Lambda function, resolve cross-platform dependency issues by building a custom `pypdf` Lambda Layer, configure IAM least-privilege policies, and tune compute resources (512MB RAM, 30s timeout) to prevent crashes.
+- **Phase 3: Bedrock Knowledge Base Integration**: Provision the Bedrock Knowledge Base, connect the Processed S3 bucket, select Titan Text Embeddings V2, and execute the initial data sync.
+- **Phase 4: Universal Dynamic Evaluation & Handoff**: Run the automated self-evaluation script against the live Bedrock KB to prove retrieval precision (>75%), then hand off the `retrieve_with_dynamic_filter` API contract to Person 2 (Prompt Engineer).
 
 **Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+- **Ingestion Engine**: Python 3.12, `pypdf` (for cross-platform compatibility), `boto3`, and advanced Regex for bilingual legal hierarchy parsing.
+- **RAG Evaluation**: Custom Python script for Universal Dynamic Self-Evaluation (sampling chunks, generating queries, and verifying 60-character fingerprint retrieval) to prove mathematical precision without hardcoded bias.
+- **Security**: Regex-based PII redaction (emails, phone numbers) prior to vectorization.
 
 ### 5. Timeline & Milestones
 **Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+- **Week 1**: Local prototyping, regex refinement, and ChromaDB mock testing.
+- **Week 2**: AWS Lambda deployment, custom Layer creation, IAM configuration, and S3 trigger setup.
+- **Week 3**: Amazon Bedrock Knowledge Base provisioning, data sync, and metadata filter validation.
+- **Week 4**: Universal Dynamic Evaluation, performance tuning, final documentation, and handoff to the LLM/Prompt Engineering team.
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
-
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
-
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+The architecture is strictly optimized for the **$200 bootcamp budget limit**.
+- **AWS Lambda**: ~$0.00/month (Well within the free tier for moderate document processing).
+- **Amazon S3**: ~$0.05/month (Minimal storage for raw PDFs and processed JSON chunks).
+- **Amazon Bedrock Knowledge Base (OpenSearch Serverless)**: ~$140.00/month (Minimum 4 OCUs for dev/testing. *Note: Can be paused between demo sessions to save costs, or swapped to Aurora PostgreSQL Serverless for lower baseline costs if required*).
+- **Amazon Bedrock (Embeddings & Retrieval)**: ~$10.00 - $20.00/month (Optimized by strict Top-K=5 retrieval and small, semantically dense chunks to minimize token usage).
+- **Total Estimated Monthly Cost**: ~$150.00 - $160.05, safely under the $200 cap.
 
 ### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+**Risk Matrix**
+- **PDF Extraction Failures (Scanned Images)**: Medium impact, medium probability.
+- **Lambda Timeouts/Memory Crashes**: High impact, low probability (mitigated).
+- **Cross-Platform Dependency Errors**: High impact, medium probability (mitigated).
+- **AI Hallucination / Context Mixing**: High impact, medium probability (mitigated).
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+**Mitigation Strategies**
+- **Extraction**: Use `pypdf` for reliable text-based PDF extraction. (Future enhancement: Add Amazon Textract for scanned images).
+- **Compute**: Proactively tune Lambda to 512 MB memory and 30-second timeout to handle heavy parsing.
+- **Dependencies**: Utilize 100% pure Python libraries (`pypdf`) and custom Lambda Layers to avoid Windows-to-Linux C-extension compilation errors.
+- **Hallucination**: Enforce strict Metadata Filtering (`document_type`) and Dual-Threshold Guardrails (rejecting retrieval scores < 0.50) to ensure the LLM only receives highly relevant, isolated context.
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+**Technical Improvements:** 
+- Automated, metadata-tagged chunking of complex, messy legal documents.
+- Deterministic retrieval isolation (zero cross-contamination between decrees and contracts).
+- A mathematically proven retrieval precision score via Universal Dynamic Self-Evaluation.
+
+**Long-term Value:**
+- A reusable, enterprise-grade serverless ingestion pipeline template that can be adapted for any legal, healthcare, or financial compliance RAG system.
+- A robust foundation for Person 2 and Person 3 to build a highly accurate, citation-backed chatbot UI.
