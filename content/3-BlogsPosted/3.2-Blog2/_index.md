@@ -1,31 +1,22 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
+date: 2026-10-27
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+# WHAT NEW AWS LEARNERS NEED TO KNOW TO AVOID END-OF-MONTH BILL SHOCK
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+One of the most common scenarios for AWS beginners is accidentally leaving a test resource running and forgetting to turn it off, only to receive an unexpected bill at the end of the month. Controlling costs not only gives you peace of mind while practicing but is also a fundamental skill in cloud infrastructure management.
 
 Key points to know:
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+* **Set up AWS Budgets & Billing Alerts**: Configure a safe budget threshold (e.g., $5 or $10). The system will automatically send an email alert when actual or forecasted costs exceed this limit, helping you catch hidden running resources early.
+* **Utilize the AWS Free Tier correctly**: Understand the specific conditions. For example, EC2 offers 750 hours/month for t2.micro or t3.micro instances. Running two instances simultaneously will double the usage and quickly exceed the free limit. Always check the storage and request limits for S3 and EBS.
+* **Clean up unused resources**: Stop or delete EC2 instances when not in use. Note that Elastic IPs are only free when attached to a *Running* instance; you will still be charged if they are unattached or attached to a *Stopped* instance. Also, remember to delete unattached EBS volumes and snapshots to avoid hidden storage fees.
+* **Track details with AWS Cost Explorer**: Use this visual tool to analyze costs over time, by service, or by Tag. Checking the cost report 1-2 times a week helps you quickly spot any unusual spending patterns.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+Cost optimization and control are essential parts of the cloud computing mindset. Setting up a safe infrastructure from the start allows you to learn and experiment with AWS services completely worry-free.
 
-...Image...
-
-...Link...
-
-...Guide...
+Link: https://www.facebook.com/groups/awsstudygroupfcj/posts/2317495209015438/?notif_id=1793075766463069&notif_t=group_post_approved&ref=notif

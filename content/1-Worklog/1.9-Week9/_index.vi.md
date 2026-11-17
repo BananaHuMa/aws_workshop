@@ -1,59 +1,21 @@
 ---
-title: "Worklog Tuần 9"
-date: 2024-01-01
+title: "Nhật ký công việc Tuần 9"
+date: 2026-11-13
 weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 9:
 
-### Mục tiêu tuần 9:
+* Thực hiện kiểm thử end-to-end nghiêm ngặt, xác thực các trường hợp biên (edge-case) và tích hợp trích dẫn UI cho Nền tảng RAG Pháp lý.
+* Thực hiện đánh giá bảo mật toàn diện và hoàn thiện việc tăng cường bảo mật nguyên tắc đặc quyền tối thiểu (least-privilege) cho IAM.
+* Hoàn tất tài liệu kỹ thuật, trình diễn cho các bên liên quan (stakeholders) và bàn giao dự án chính thức.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 9:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### Các công việc cần triển khai trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - **Kiểm thử End-to-End Cuối cùng & Xác thực Trường hợp Biên:** <br>&emsp; + Thực hiện UAT nghiêm ngặt trên Nền tảng RAG Pháp lý <br>&emsp; + Kiểm thử các cơ chế bảo vệ chống ảo giác bằng cách truy vấn các điều khoản pháp lý không tồn tại để xác minh cơ chế dự phòng `NO_EVIDENCE_FOUND` <br>&emsp; + Xác thực hiệu suất truy vấn DynamoDB và độ trễ của Groq API dưới tải giả lập | 09/11/2026 | 09/11/2026 | Tài liệu Kiểm thử Nội bộ |
+| 2 | - **Tích hợp Trích dẫn UI & Tinh chỉnh UX:** <br>&emsp; + Hợp tác với nhóm UI để ánh xạ các S3 URI thô từ phản hồi Lambda thành các trích dẫn pháp lý có thể nhấp và xác minh được <br>&emsp; + Tinh chỉnh UX giao diện chat để hiển thị rõ ràng tài liệu nguồn (ví dụ: Nghị định 13/2023/NĐ-CP) bên cạnh câu trả lời của LLM | 10/11/2026 | 10/11/2026 | Tài liệu Tích hợp Frontend |
+| 3 | - **Đánh giá Bảo mật & Tăng cường IAM:** <br>&emsp; + Thực hiện rà soát bảo mật cuối cùng đối với tất cả các vai trò và chính sách IAM <br>&emsp; + Đảm bảo quyền truy cập đặc quyền tối thiểu nghiêm ngặt cho Lambda (S3 Read, DynamoDB Query, CloudWatch Logs) <br>&emsp; + Xác minh các chính sách S3 bucket để ngăn chặn truy cập công khai trái phép vào các tài liệu pháp lý thô | 11/11/2026 | 11/11/2026 | Thực tiễn Tốt nhất về AWS IAM & Bảo mật |
+| 4 | - **Tài liệu Kỹ thuật & Chuyển giao Kiến thức:** <br>&emsp; + Soạn thảo tài liệu kỹ thuật toàn diện, bao gồm sơ đồ kiến trúc, giao ước API và sổ tay triển khai (deployment runbooks) <br>&emsp; + Ghi

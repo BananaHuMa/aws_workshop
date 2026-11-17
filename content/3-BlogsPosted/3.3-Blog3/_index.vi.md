@@ -1,31 +1,22 @@
 ---
 title: "Blog 3"
-date: 2024-01-01
+date: 2026-10-27
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# XÂY DỰNG TRANG WEB TĨNH ĐƠN GIẢN, BẢO MẬT VỚI S3 + CLOUDFRONT + ROUTE 53
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Khi hoàn thành một trang web tĩnh (HTML/CSS/JS thuần hoặc các bản build từ React, Vue, Next.js), bài toán tiếp theo là lựa chọn giải pháp lưu trữ và phân phối lên internet. Mục tiêu đặt ra thường là: chi phí tối ưu, tốc độ truy cập nhanh, hỗ trợ HTTPS an toàn và không tốn công quản lý server. Bộ ba dịch vụ Amazon S3 + Amazon CloudFront + Route 53 là kiến trúc chuẩn hóa giúp giải quyết bài toán này một cách tối ưu.
 
-Các điểm chính cần nắm:
+Những điểm chính cần biết:
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+* **Bước 1: Lưu trữ tập tin với Amazon S3**: Khởi tạo S3 Bucket chứa mã nguồn web tĩnh đã build, cấu hình Bucket Policy hợp lý và bật tính năng Static website hosting (thiết lập file truy cập mặc định như index.html và 404.html).
+* **Bước 2: Tăng tốc & Bảo mật với Amazon CloudFront (CDN)**: Tạo CloudFront Distribution và trỏ nguồn (Origin) về S3 Bucket. Dữ liệu được cache tại các Edge Location toàn cầu để giảm độ trễ. Tích hợp chứng chỉ SSL/TLS miễn phí từ AWS Certificate Manager (ACM) cho HTTPS và cấu hình OAC (Origin Access Control) để chặn truy cập trực tiếp vào S3, chỉ cho phép traffic đi qua CloudFront.
+* **Bước 3: Định tuyến tên miền với Amazon Route 53**: Tạo Hosted Zone cho tên miền trên Route 53, sau đó cấu hình bản ghi A Record (dạng Alias) để trỏ tên miền chính hoặc subdomain về địa chỉ CloudFront Distribution.
+* **Giá trị kỹ thuật**: Tối ưu chi phí (kiến trúc Serverless, chi phí hàng tháng gần như bằng 0 cho dự án nhỏ), khả năng mở rộng tự động (Scalability) nhờ mạng lưới CDN xử lý traffic đột biến, và đơn giản hóa vận hành (không cần vá lỗi OS hay quản lý SSL định kỳ).
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+Đây là một trong những bài thực hành kinh điển nhưng rất quan trọng, giúp bạn nắm vững tư duy kết hợp các dịch vụ cơ bản trên AWS để tạo nên một hệ thống hoàn chỉnh, bảo mật và chuẩn công nghiệp.
 
-...Hình ảnh...
-
-...Link...
-
-...Hướng dẫn...
+Link: https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2317669882331304&notif_id=1793105995816910&notif_t=feedback_reaction_generic&ref=notif

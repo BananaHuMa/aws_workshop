@@ -1,57 +1,30 @@
 ---
 title: "Week 7 Worklog"
-date: 2024-01-01
+date: 2026-11-01
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Finalize local RAG pipeline prototyping and validate retrieval accuracy before AWS deployment.
+* Deploy, troubleshoot, and optimize the serverless data ingestion pipeline on AWS (Lambda, S3, Bedrock).
+* Draft, architect, and initiate the technical implementation of the "Legal RAG Platform (Decree 13/2023/NĐ-CP)" proposal.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | - **Local RAG Prototyping & Validation:** <br>&emsp; + Validate pipeline using ChromaDB & multilingual `sentence-transformers` to mimic AWS behavior <br>&emsp; + Develop Universal Smart Chunking Engine (Tier 1: bilingual regex for VN/EN legal hierarchies; Tier 2: fallback paragraph chunker) <br>&emsp; + Implement Dual-Threshold Guardrails (>0.65 to include, <0.50 returns `NO_EVIDENCE_FOUND`) <br>&emsp; + Build Universal Dynamic Self-Evaluation engine (60-char fingerprint matching) | 26/10/2026 | 26/10/2026 | Internal Project Docs |
+| 2 | - **AWS Deployment & Engineering Resolutions:** <br>&emsp; + Architect dual-bucket S3 routing (`raw-docs` vs `processed-chunks`) for deterministic metadata stamping <br>&emsp; + Resolve Lambda Layer cross-platform compilation crisis by pivoting from `pdfplumber` to pure-Python `pypdf` <br>&emsp; + Tune Lambda compute resources to 512 MB RAM and 30s Timeout to prevent PDF parsing crashes <br>&emsp; + Configure least-privilege IAM policies and S3 Event Notifications | 27/10/2026 | 27/10/2026 | AWS Lambda & IAM Docs |
+| 3 | - **Amazon Bedrock Knowledge Base Integration:** <br>&emsp; + Configure Knowledge Base to ingest pre-chunked JSON directly from S3 <br>&emsp; + Select Amazon Titan Text Embeddings V2 for native multilingual semantic search accuracy <br>&emsp; + Provision Amazon OpenSearch Serverless via Bedrock Quick Create <br>&emsp; + Successfully sync and index 255+ perfectly structured, metadata-tagged JSON chunks | 28/10/2026 | 28/10/2026 | Amazon Bedrock Docs |
+| 4 | - **Legal RAG Proposal (Phase 1 & 2):** <br>&emsp; + Define scope and Serverless RAG data flow for Decree 13/2023/NĐ-CP <br>&emsp; + Draft strict System Prompts for absolute context constraint (zero hallucination) <br>&emsp; + Provision DynamoDB `LegalArticles` table <br>&emsp; + Develop Python Lambda function for context retrieval and Groq API (`qwen/qwen3.8-27b`) integration | 29/10/2026 | 29/10/2026 | Internal Project Docs |
+| 5 | - **Legal RAG Proposal (Phase 3 & 4):** <br>&emsp; + Configure API Gateway (CORS headers, standardized error handling for 400, 429, 502/504) <br>&emsp; + Deploy S3 Static Website and integrate frontend chat UI with backend API <br>&emsp; + Execute end-to-end testing (via `curl` and web UI), verify LLM accuracy, and finalize $0-cost deployment | 30/10/2026 | 30/10/2026 | AWS API Gateway Docs |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully validated the local RAG pipeline, achieving mathematically proven retrieval accuracy (**Average Precision > 0.75**) using the Universal Dynamic Self-Evaluation method, eliminating hardcoded bias.
+* Resolved critical AWS deployment hurdles, including cross-platform Lambda Layer compilation errors and compute timeout crashes, ensuring a stable, production-ready serverless ingestion pipeline.
+* Successfully integrated Amazon Bedrock Knowledge Base with **Titan Text Embeddings V2** and OpenSearch Serverless, indexing 255+ perfectly structured, metadata-tagged chunks with **zero cross-contamination** between document types.
+* Drafted and structured the comprehensive technical proposal for the **"Legal RAG Platform (Decree 13/2023/NĐ-CP)"**, defining a highly scalable, $0-cost Serverless architecture (S3, API Gateway, Lambda, DynamoDB, Groq API).
+* Delivered the `retrieve_with_dynamic_filter` API contract to the broader team, guaranteeing safe fallback responses (`NO_EVIDENCE_FOUND`) and providing raw S3 URIs for clickable UI citations, ensuring a smooth handoff for the Prompt Engineering and UI phases.

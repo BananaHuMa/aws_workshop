@@ -1,31 +1,22 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
+date: 2026-10-27
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# MỚI HỌC AWS CẦN LƯU Ý GÌ ĐỂ KHÔNG "GIẬT MÌNH" VÌ HÓA ĐƠN CUỐI THÁNG?
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Một trong những tình huống quen thuộc với người mới bắt đầu trải nghiệm AWS là lỡ tay bật một tài nguyên thử nghiệm rồi quên tắt, dẫn đến hóa đơn bất ngờ vào cuối tháng. Việc kiểm soát chi phí không chỉ giúp bạn yên tâm thực hành mà còn là kỹ năng cơ bản và quan trọng trong quản trị hạ tầng Cloud.
 
-Các điểm chính cần nắm:
+Những điểm chính cần biết:
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+* **Thiết lập AWS Budgets & Billing Alerts**: Cấu hình ngưỡng ngân sách an toàn (ví dụ: $5 hoặc $10). Hệ thống sẽ tự động gửi email cảnh báo khi chi phí thực tế hoặc dự báo vượt quá ngưỡng này, giúp phát hiện kịp thời các tài nguyên chạy ngầm.
+* **Tận dụng AWS Free Tier đúng cách**: Nắm rõ các điều kiện đi kèm. Ví dụ: EC2 miễn phí 750 giờ/tháng cho dòng t2.micro hoặc t3.micro. Chạy đồng thời 2 instance sẽ bị tính phí gấp đôi và nhanh chóng vượt mức miễn phí. Luôn kiểm tra kỹ giới hạn dung lượng của S3 và EBS.
+* **Dọn dẹp tài nguyên không sử dụng**: Tắt hoặc xóa EC2 instance khi không làm việc. Lưu ý Elastic IP chỉ miễn phí khi được gán vào một instance đang ở trạng thái Running (nếu ngắt kết nối hoặc gán vào instance Stopped, bạn vẫn bị tính phí). Đừng quên xóa các Unattached EBS Volumes và Snapshots để tránh phí lưu trữ ẩn.
+* **Theo dõi chi tiết với AWS Cost Explorer**: Sử dụng công cụ trực quan này để phân tích chi phí theo thời gian, theo dịch vụ hoặc theo Tag. Thói quen kiểm tra báo cáo chi phí 1-2 lần/tuần giúp bạn nhanh chóng phát hiện các dịch vụ đang tiêu tốn ngân sách bất thường.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+Tối ưu và kiểm soát chi phí là một phần không thể thiếu trong tư duy làm việc với Cloud Computing. Thiết lập hạ tầng an toàn ngay từ đầu sẽ giúp bạn thoải mái học tập và thử nghiệm các dịch vụ AWS mà không phải lo lắng về vấn đề hóa đơn.
 
-...Hình ảnh...
-
-...Link...
-
-...Hướng dẫn...
+Link: https://www.facebook.com/groups/awsstudygroupfcj/posts/2317495209015438/?notif_id=1793075766463069&notif_t=group_post_approved&ref=notif

@@ -1,31 +1,22 @@
 ---
 title: "Blog 3"
-date: 2024-01-01
+date: 2026-10-27
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+# BUILDING A SIMPLE, SECURE STATIC WEBSITE WITH S3 + CLOUDFRONT + ROUTE 53
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+When you finish a static website (pure HTML/CSS/JS or builds from React, Vue, Next.js), the next challenge is choosing a storage and distribution solution for the internet. The typical goals are: optimized costs, fast access speed, secure HTTPS support, and zero server management effort. The trio of Amazon S3 + Amazon CloudFront + Route 53 is the standardized architecture that solves this problem optimally.
 
 Key points to know:
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+* **Step 1: File Storage with Amazon S3**: Create an S3 Bucket to hold the built static web source code. Configure the S3 Bucket Policy with appropriate access rights and enable Static website hosting to set default access files (e.g., index.html and 404.html).
+* **Step 2: Acceleration & Security with Amazon CloudFront (CDN)**: Create a CloudFront Distribution and point the Origin to the newly created S3 Bucket. Data is cached at global Edge Locations to minimize latency. Integrate a free SSL/TLS certificate from AWS Certificate Manager (ACM) to enable HTTPS. Configure Origin Access Control (OAC) to block direct external access to the S3 Bucket, allowing traffic only through CloudFront.
+* **Step 3: Domain Routing with Amazon Route 53**: Create a Hosted Zone for your custom domain on Route 53. Configure an A Record (Alias) to point the main domain or subdomain to the CloudFront Distribution address.
+* **Technical Value**: Cost optimization (fully Serverless, monthly costs are near $0 for small projects), Scalability (CloudFront's CDN network automatically handles traffic spikes without infrastructure upgrades), and simplified operations (no need to worry about OS patching or periodic SSL certificate management).
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+This is one of the classic yet highly important hands-on practices, helping you master the mindset of combining fundamental AWS services to create a complete, secure, and industry-standard system.
 
-...Image...
-
-...Link...
-
-...Guide...
+Link: https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2317669882331304&notif_id=1793105995816910&notif_t=feedback_reaction_generic&ref=notif
