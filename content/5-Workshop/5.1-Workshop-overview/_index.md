@@ -16,8 +16,7 @@ pre : " <b> 5.1. </b> "
 Employees need fast answers about personal-data rules (for example, using customers' ID card data for advertising). A public chatbot may invent articles or citations. Goal: answers grounded only in the legal text the team provided, running at near-zero cost on AWS.
 
 #### Architecture and data flow
-![Architecture and data-flow diagram](/images/5-Workshop/5.1-Introduction/architecture.png)
-
+![Architecture and data-flow diagram](../../images/Diagram.png)
 #### Data flow
 1. The user opens the website on S3, types a question in the chat box and sends it. `index.html` sends an HTTPS POST request to API Gateway.
 2. API Gateway checks CORS and forwards the payload to the Lambda function.
